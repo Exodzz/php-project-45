@@ -1,5 +1,9 @@
 {
     "name": "hexlet/code",
+    "description": "hexlet/code",
+    "license": [
+        "MIT"
+    ],
     "autoload": {
         "psr-4": {
             "Hexlet\\Code\\": "src/"
@@ -10,5 +14,9 @@
             "name": "gorshkov.s"
         }
     ],
-    "require": {}
+    "require": {},
+    "bin": [
+        "bin/brain-games"
+    ]
 }
+
