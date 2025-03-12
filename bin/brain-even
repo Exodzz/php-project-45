@@ -2,9 +2,9 @@
 <?php
 require_once(__DIR__ . '/../vendor/autoload.php');
 
+use function BrainGames\Enginie\close;
+use function \BrainGames\Enginie\init;
 
-use function cli\line;
-use function cli\prompt;
 
 const COUNT_ALLOW = 3;
 const VARIANTS = [
@@ -12,105 +12,22 @@ const VARIANTS = [
     'no'  => false
 ];
 $name = 'Mr';
-$answers = 0;
-init($name, $answers);
-/**
- * init
- */
-function init($name, $answers)
-{
-    try {
-        greetings($name);
-        answer();
-        getQuestion($answers, $name);
-    } catch (\RuntimeException|Error $e) {
-        sendLine($e->getMessage());
-    }
-}
-
-/**
- * Приветствие
- */
-function greetings(&$name): void
-{
-    line('Welcome to the Brain Game!');
-    $name = prompt('May I have your name?');
-    line("Hello, %s!", $name);
-}
-
-/**
- * Создание вопроса
- */
-function answer(): void
-{
-    line('Answer "yes" if the number is even, otherwise answer "no".');
-}
-
-/**
- * Запрос вопроса
- */
-function getQuestion(&$answers, $name): bool
-{
-    $numberQuestion = rand(1, 99);
-    $resultQuestion = $numberQuestion % 2 === 0;
-    $answer = prompt("Question: " . $numberQuestion);
-    sendLine("Your answer: $answer");
-    validateAnswer($answer);
-    if ($resultQuestion === VARIANTS[$answer]) {
-        success($answers, $name);
-        return false;
-    }
-    bad($answer, $name);
-    return true;
-}
-
-/**
- * Валидация
- */
-function validateAnswer(string $answer): void
-{
-    if (!array_key_exists($answer, VARIANTS)) {
-        close("'$answer' is wrong answer ;(.");
-    }
-}
-
-/**
- * Отправка сообщения
- */
-function sendLine(string $text = ""): void
-{
-    line($text);
-}
-
-/**
- * Отправка сообщения
- */
-function bad(string $answer, string $name)
-{
-    $answerCorrect = $answer !== 'yes' ? 'yes' : 'no';
-    $message = "'$answer' is wrong answer ;(. Correct answer was '$answerCorrect'." . PHP_EOL .
-        "Let's try again, $name";
-    close($message);
-}
-
-function addSuccessAnswer(int &$answers, string $name)
-{
-    $answers++;
-    if ($answers >= COUNT_ALLOW) {
-        close("Congratulations, $name!");
-    }
-}
-
-function success(&$answers, $name): void
-{
-    line("Correct!");
-    addSuccessAnswer($answers, $name);
-    getQuestion($answers, $name);
-}
-
-function close(string $message = "Error")
-{
-    throw new \RuntimeException($message);
-}
-
-
+$answersCount = 0;
+$config = [
+        'answer'=>'Answer "yes" if the number is even, otherwise answer "no".',
+        'questionFunc'=>function(){
+            $numberQuestion = rand(1, 99);
+            $resultQuestion = $numberQuestion % 2 === 0;
+            return [
+                'question'  => $numberQuestion,
+                'resultOk'  => $resultQuestion ? 'yes' : 'no',
+                'resultBad' => $resultQuestion ? 'no' : 'yes'
+            ];
+        },
+        'validate'=> function($answer){
+            if (!in_array($answer, ['yes','no'])) {
+                close("'$answer' is wrong answer ;(.");
+            }
+        }
+];
+init($name, $answersCount,$config);
