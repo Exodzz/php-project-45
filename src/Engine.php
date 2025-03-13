@@ -98,7 +98,7 @@ function sendLine(string $text = ""): void
 function bad(string $answer, string $name, array $configQuestion): void
 {
     $message = "'$answer' is wrong answer ;(. Correct answer was '{$configQuestion['resultOk']}'." . PHP_EOL .
-        "Let's try again, $name";
+        "Let's try again, $name!";
     close($message);
 }
 
