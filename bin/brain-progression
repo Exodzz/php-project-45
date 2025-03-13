@@ -7,7 +7,6 @@ use function \BrainGames\Engine\playGame;
 use function \BrainGames\Utils\getProgression;
 
 
-const COUNT_ALLOW = 3;
 $name = 'Mr';
 $answersCount = 0;
 $config = [

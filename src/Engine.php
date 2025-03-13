@@ -7,6 +7,7 @@ use Error;
 use function cli\line;
 use function cli\prompt;
 
+const COUNT_ALLOW = 3;
 /**
  * init
  */
@@ -59,15 +60,7 @@ function getQuestion(int &$answers, string $name, array $config): bool
     return true;
 }
 
-/**
- * Валидация
- */
-function validateAnswer(string $answer): void
-{
-    if (!array_key_exists($answer, VARIANTS)) {
-        close("'$answer' is wrong answer ;(.");
-    }
-}
+
 
 /**
  * Отправка сообщения

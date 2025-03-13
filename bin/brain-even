@@ -6,7 +6,6 @@ use function BrainGames\Engine\close;
 use function \BrainGames\Engine\playGame;
 
 
-const COUNT_ALLOW = 3;
 const VARIANTS = [
     'yes' => true,
     'no'  => false
