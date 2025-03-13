@@ -18,7 +18,7 @@ function gcd($a, $b)
 /***
  * Прогрессия
  * */
-function getProgression($length, $start, $difference)
+function getProgression(int $length, int $start, int $difference)
 {
     $progression = [];
     for ($i = 0; $i < $length; $i++) {
@@ -30,7 +30,7 @@ function getProgression($length, $start, $difference)
 /***
  * Простое ли число?
  * */
-function isPrime($n)
+function isPrime(int $n)
 {
     if ($n < 2) {
         return false;
@@ -50,6 +50,5 @@ function isPrime($n)
             return false;
         }
     }
-
     return true;
 }
