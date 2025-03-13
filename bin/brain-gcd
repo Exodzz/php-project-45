@@ -17,7 +17,7 @@ $config = [
         $numberQuestion1 = rand(23, 99);
         $numberQuestion2 = rand(10, 99);
         $resultQuestion = gcd($numberQuestion1, $numberQuestion2);
-        $question = "$numberQuestion1  $numberQuestion2";
+        $question = "$numberQuestion1 $numberQuestion2";
 
 
         return [
