@@ -8,7 +8,6 @@ use function \BrainGames\Utils\getProgression;
 
 
 const COUNT_ALLOW = 3;
-const DEBUG = true;
 $name = 'Mr';
 $answersCount = 0;
 $config = [
@@ -21,9 +20,7 @@ $config = [
         $resultQuestion = $progression[$hiddenIndex];
         $progression[$hiddenIndex] = '..';
         $question = implode(' ',$progression);
-        if(DEBUG){
-            file_put_contents(__DIR__.'./../logs/log.log', $resultQuestion);
-        }
+
         return [
             'question' => $question,
             'resultOk' => $resultQuestion,

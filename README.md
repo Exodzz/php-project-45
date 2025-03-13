@@ -8,7 +8,7 @@
 
 Parity
 
-<a href="https://asciinema.org/connect/5b979a35-0174-423b-a65b-0e26f15fbed5" target="_blank"><img src="https://asciinema.org/a/eRXhzNe7kUmHcfYFwSXqX4WRG.svg"/></a>
+<a href="https://asciinema.org/a/eRXhzNe7kUmHcfYFwSXqX4WRG" target="_blank"><img src="https://asciinema.org/a/eRXhzNe7kUmHcfYFwSXqX4WRG.svg"/></a>
 
 Calc
 
@@ -16,4 +16,8 @@ Calc
 
 Gcd
 
-<a href="https://asciinema.org/a/x3zSI7tRQlJ3Fu3he0qR4dQnF" target="_blank"><img src="https://asciinema.org/a/x3zSI7tRQlJ3Fu3he0qR4dQnF.svg?f=t&v=0"/></a>
+<a href="https://asciinema.org/a/x3zSI7tRQlJ3Fu3he0qR4dQnF" target="_blank"><img src="https://asciinema.org/a/x3zSI7tRQlJ3Fu3he0qR4dQnF.svg"/></a>
+
+Progression
+
+<a href="https://asciinema.org/a/zVjtEfhrGWhuUfm20LFWrgGFh" target="_blank"><img src="https://asciinema.org/a/zVjtEfhrGWhuUfm20LFWrgGFh.svg"/></a>
