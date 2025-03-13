@@ -25,7 +25,7 @@ function playGame(string $name, int $answers, array $config): void
 /**
  * Валидация конфигурации
  */
-function validateConfig($config): void
+function validateConfig(array $config): void
 {
     foreach ($config as $key => $value) {
         if (
@@ -41,7 +41,7 @@ function validateConfig($config): void
 /**
  * Приветствие
  */
-function greetings(&$name): void
+function greetings(string &$name): void
 {
     line('Welcome to the Brain Game!');
     $name = prompt('May I have your name?');
@@ -51,7 +51,7 @@ function greetings(&$name): void
 /**
  * Создание вопроса
  */
-function answer($config): void
+function answer(string $config): void
 {
     line($config['answer']);
 }
@@ -59,7 +59,7 @@ function answer($config): void
 /**
  * Запрос вопроса
  */
-function getQuestion(&$answers, $name, $config): bool
+function getQuestion(array &$answers, string $name, array $config): bool
 {
     $configQuestion = $config['questionFunc']();
     $question = $configQuestion['question'];
@@ -102,7 +102,7 @@ function bad(string $answer, string $name, array $configQuestion): void
     close($message);
 }
 
-function addSuccessAnswer(int &$answers, string $name)
+function addSuccessAnswer(array &$answers, string $name)
 {
     $answers++;
     if ($answers >= COUNT_ALLOW) {
@@ -110,7 +110,7 @@ function addSuccessAnswer(int &$answers, string $name)
     }
 }
 
-function success(&$answers, $name, $config): void
+function success(array &$answers, string $name, array $config): void
 {
     line("Correct!");
     addSuccessAnswer($answers, $name);
