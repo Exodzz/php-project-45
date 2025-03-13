@@ -10,7 +10,8 @@
         },
         "files": [
             "./src/Engine.php",
-            "./src/Utils.php"
+            "./src/Utils.php",
+            "./src/Cli.php"
         ]
     },
     "authors": [
