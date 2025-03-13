@@ -13,7 +13,6 @@ use function cli\prompt;
 function playGame(string $name, int $answers, array $config): void
 {
     try {
-        validateConfig($config);
         greetings($name);
         answer($config);
         getQuestion($answers, $name, $config);
@@ -22,21 +21,7 @@ function playGame(string $name, int $answers, array $config): void
     }
 }
 
-/**
- * Валидация конфигурации
- */
-function validateConfig(array $config): void
-{
-    foreach ($config as $key => $value) {
-        if (
-            !in_array($key, ['answer', 'questionFunc', 'validate']) &&
-            !is_callable($config['validate']) &&
-            !is_callable($config['questionFunc'])
-        ) {
-            close('bad config');
-        }
-    }
-}
+
 
 /**
  * Приветствие
