@@ -2,8 +2,8 @@
 <?php
 require_once(__DIR__ . '/../vendor/autoload.php');
 
-use function BrainGames\Enginie\close;
-use function \BrainGames\Enginie\init;
+use function BrainGames\Engine\close;
+use function \BrainGames\Engine\playGame;
 
 
 const COUNT_ALLOW = 3;
@@ -14,35 +14,35 @@ const VARIANTS = [
 $name = 'Mr';
 $answersCount = 0;
 $config = [
-        'answer'=>'What is the result of the expression?',
-        'questionFunc'=>function(){
-            $operators = ['-','+','*'];
-            $numberQuestion1 = rand(1, 99);
-            $numberQuestion2 = rand(1, 99);
-            $operator = $operators[rand(0,count($operators)-1)];
-            $question = "$numberQuestion1 {$operator} $numberQuestion2";
+    'answer'       => 'What is the result of the expression?',
+    'questionFunc' => function () {
+        $operators = ['-', '+', '*'];
+        $numberQuestion1 = rand(1, 99);
+        $numberQuestion2 = rand(1, 99);
+        $operator = $operators[rand(0, count($operators) - 1)];
+        $question = "$numberQuestion1 {$operator} $numberQuestion2";
 
-            switch ($operator) {
-                case '+':
-                    $resultQuestion = $numberQuestion1 + $numberQuestion2;
-                    break;
-                case '-':
-                    $resultQuestion = $numberQuestion1 - $numberQuestion2;
-                    break;
-                case '*':
-                    $resultQuestion = $numberQuestion1 * $numberQuestion2;
-                    break;
-            }
-
-            return [
-                'question'  => $question,
-                'resultOk'  => $resultQuestion,
-            ];
-        },
-        'validate'=> function($answer,$resultQuestion){
-            if (!is_int($resultQuestion)) {
-                close(";'$answer' is wrong answer ;(.");
-            }
+        switch ($operator) {
+            case '+':
+                $resultQuestion = $numberQuestion1 + $numberQuestion2;
+                break;
+            case '-':
+                $resultQuestion = $numberQuestion1 - $numberQuestion2;
+                break;
+            case '*':
+                $resultQuestion = $numberQuestion1 * $numberQuestion2;
+                break;
         }
+
+        return [
+            'question' => $question,
+            'resultOk' => $resultQuestion,
+        ];
+    },
+    'validate'     => function ($answer, $resultQuestion) {
+        if (!is_int($resultQuestion)) {
+            close(";'$answer' is wrong answer ;(.");
+        }
+    }
 ];
-init($name, $answersCount,$config);
+playGame($name, $answersCount, $config);

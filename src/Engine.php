@@ -1,6 +1,6 @@
 <?php
 
-namespace BrainGames\Enginie;
+namespace BrainGames\Engine;
 
 use Error;
 
@@ -10,7 +10,7 @@ use function cli\prompt;
 /**
  * init
  */
-function init(string $name, int $answers, array $config): void
+function playGame(string $name, int $answers, array $config): void
 {
     try {
         validateConfig($config);

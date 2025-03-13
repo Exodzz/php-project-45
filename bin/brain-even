@@ -2,8 +2,8 @@
 <?php
 require_once(__DIR__ . '/../vendor/autoload.php');
 
-use function BrainGames\Enginie\close;
-use function \BrainGames\Enginie\init;
+use function BrainGames\Engine\close;
+use function \BrainGames\Engine\playGame;
 
 
 const COUNT_ALLOW = 3;
@@ -14,20 +14,20 @@ const VARIANTS = [
 $name = 'Mr';
 $answersCount = 0;
 $config = [
-        'answer'=>'Answer "yes" if the number is even, otherwise answer "no".',
-        'questionFunc'=>function(){
-            $numberQuestion = rand(1, 99);
-            $resultQuestion = $numberQuestion % 2 === 0;
-            return [
-                'question'  => $numberQuestion,
-                'resultOk'  => $resultQuestion ? 'yes' : 'no',
-                'resultBad' => $resultQuestion ? 'no' : 'yes'
-            ];
-        },
-        'validate'=> function($answer){
-            if (!in_array($answer, ['yes','no'])) {
-                close("'$answer' is wrong answer ;(.");
-            }
+    'answer'       => 'Answer "yes" if the number is even, otherwise answer "no".',
+    'questionFunc' => function () {
+        $numberQuestion = rand(1, 99);
+        $resultQuestion = $numberQuestion % 2 === 0;
+        return [
+            'question'  => $numberQuestion,
+            'resultOk'  => $resultQuestion ? 'yes' : 'no',
+            'resultBad' => $resultQuestion ? 'no' : 'yes'
+        ];
+    },
+    'validate'     => function ($answer) {
+        if (!in_array($answer, ['yes', 'no'])) {
+            close("'$answer' is wrong answer ;(.");
         }
+    }
 ];
-init($name, $answersCount,$config);
+playGame($name, $answersCount, $config);
