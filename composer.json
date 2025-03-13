@@ -9,7 +9,8 @@
             "BrainGames\\": "src/"
         },
         "files": [
-            "./src/Engine.php"
+            "./src/Engine.php",
+            "./src/Utils.php"
         ]
     },
     "authors": [
@@ -22,6 +23,8 @@
     },
     "bin": [
         "bin/brain-games",
+        "bin/brain-calc",
+        "bin/brain-gcd",
         "bin/brain-even"
     ],
     "require-dev": {
