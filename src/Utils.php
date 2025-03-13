@@ -26,3 +26,30 @@ function getProgression($length, $start, $difference)
     }
     return $progression;
 }
+
+/***
+ * Простое ли число?
+ * */
+function isPrime($n)
+{
+    if ($n < 2) {
+        return false;
+    }
+
+    if ($n == 2) {
+        return true;
+    }
+
+    if ($n % 2 == 0) {
+        return false;
+    }
+
+    $sqrtN = sqrt($n);
+    for ($i = 3; $i <= $sqrtN; $i += 2) {
+        if ($n % $i == 0) {
+            return false;
+        }
+    }
+
+    return true;
+}
