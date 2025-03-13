@@ -2,7 +2,7 @@
 
 namespace BrainGames\Utils;
 
-/**
+/***
  * Вычисление НОД
  * */
 function gcd($a, $b)
@@ -13,4 +13,16 @@ function gcd($a, $b)
         $a = $temp;
     }
     return $a;
+}
+
+/***
+ * Прогрессия
+ * */
+function getProgression($length, $start, $difference)
+{
+    $progression = [];
+    for ($i = 0; $i < $length; $i++) {
+        $progression[] = $start + $i * $difference;
+    }
+    return $progression;
 }

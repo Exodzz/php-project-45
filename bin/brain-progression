@@ -1,0 +1,38 @@
+#!/usr/bin/env php
+<?php
+require_once(__DIR__ . '/../vendor/autoload.php');
+
+use function BrainGames\Engine\close;
+use function \BrainGames\Engine\playGame;
+use function \BrainGames\Utils\getProgression;
+
+
+const COUNT_ALLOW = 3;
+const DEBUG = true;
+$name = 'Mr';
+$answersCount = 0;
+$config = [
+    'answer'       => 'What number is missing in the progression?',
+    'questionFunc' => function () {
+        $length = rand(5, 10);
+        $progression = getProgression($length, rand(1, 20), rand(1, 5));
+
+        $hiddenIndex = rand(0, $length - 1);
+        $resultQuestion = $progression[$hiddenIndex];
+        $progression[$hiddenIndex] = '..';
+        $question = implode(' ',$progression);
+        if(DEBUG){
+            file_put_contents(__DIR__.'./../logs/log.log', $resultQuestion);
+        }
+        return [
+            'question' => $question,
+            'resultOk' => $resultQuestion,
+        ];
+    },
+    'validate'     => function ($answer, $resultQuestion) {
+        if (!is_int($resultQuestion)) {
+            close(";'$answer' is wrong answer ;(.");
+        }
+    }
+];
+playGame($name, $answersCount, $config);
