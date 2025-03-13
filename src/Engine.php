@@ -51,7 +51,7 @@ function greetings(string &$name): void
 /**
  * Создание вопроса
  */
-function answer(string $config): void
+function answer(array $config): void
 {
     line($config['answer']);
 }
@@ -59,7 +59,7 @@ function answer(string $config): void
 /**
  * Запрос вопроса
  */
-function getQuestion(array &$answers, string $name, array $config): bool
+function getQuestion(int &$answers, string $name, array $config): bool
 {
     $configQuestion = $config['questionFunc']();
     $question = $configQuestion['question'];
@@ -102,7 +102,7 @@ function bad(string $answer, string $name, array $configQuestion): void
     close($message);
 }
 
-function addSuccessAnswer(array &$answers, string $name)
+function addSuccessAnswer(int &$answers, string $name)
 {
     $answers++;
     if ($answers >= COUNT_ALLOW) {
@@ -110,7 +110,7 @@ function addSuccessAnswer(array &$answers, string $name)
     }
 }
 
-function success(array &$answers, string $name, array $config): void
+function success(int &$answers, string $name, array $config): void
 {
     line("Correct!");
     addSuccessAnswer($answers, $name);
