@@ -5,7 +5,7 @@ namespace BrainGames\Utils;
 /***
  * Вычисление НОД
  * */
-function gcd(int $a,int $b)
+function gcd(int $a, int $b)
 {
     while ($b != 0) {
         $temp = $b;
