@@ -15,7 +15,7 @@ const VARIANTS = [
 $name = 'Mr';
 $answersCount = 0;
 $config = [
-    'answer'       => 'What is the result of the expression?',
+    'answer'       => 'Answer "yes" if given number is prime. Otherwise answer "no".',
     'questionFunc' => function () {
 
         $numberQuestion = rand(1, 99);
