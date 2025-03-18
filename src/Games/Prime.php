@@ -6,8 +6,6 @@ use function BrainGames\Engine\close;
 use function BrainGames\Engine\playGame;
 use function BrainGames\Utils\isPrime;
 
-const VARIANTS = ['yes', 'no'];
-
 function startPrime()
 {
     $name = 'Mr';
@@ -25,7 +23,7 @@ function startPrime()
             ];
         },
         'validate'     => function ($answer = '') {
-            if (!in_array($answer, VARIANTS)) {
+            if ($answer !== 'yes' && $answer !== 'no') {
                 close(";'$answer' is wrong answer ;(.");
             }
         }

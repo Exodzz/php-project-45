@@ -5,8 +5,6 @@ namespace Brain\Games\Even;
 use function BrainGames\Engine\close;
 use function BrainGames\Engine\playGame;
 
-use const Brain\Games\Prime\VARIANTS;
-
 function startEven(): void
 {
 
@@ -23,8 +21,8 @@ function startEven(): void
                 'resultBad' => $resultQuestion ? 'no' : 'yes'
             ];
         },
-        'validate'     => function ($answer = '') {
-            if (!in_array($answer, VARIANTS)) {
+        'validate'     => function ($answer) {
+            if ($answer !== 'yes' && $answer !== 'no') {
                 close("'$answer' is wrong answer ;(.");
             }
         }
