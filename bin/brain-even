@@ -1,32 +1,16 @@
 #!/usr/bin/env php
 <?php
-require_once(__DIR__ . '/../vendor/autoload.php');
 
-use function BrainGames\Engine\close;
-use function \BrainGames\Engine\playGame;
+$autoloadPath1 = __DIR__ . '/../../../autoload.php';
 
+$autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
 
-const VARIANTS = [
-    'yes' => true,
-    'no'  => false
-];
-$name = 'Mr';
-$answersCount = 0;
-$config = [
-    'answer'       => 'Answer "yes" if the number is even, otherwise answer "no".',
-    'questionFunc' => function () {
-        $numberQuestion = rand(1, 99);
-        $resultQuestion = $numberQuestion % 2 === 0;
-        return [
-            'question'  => $numberQuestion,
-            'resultOk'  => $resultQuestion ? 'yes' : 'no',
-            'resultBad' => $resultQuestion ? 'no' : 'yes'
-        ];
-    },
-    'validate'     => function ($answer) {
-        if (!in_array($answer, ['yes', 'no'])) {
-            close("'$answer' is wrong answer ;(.");
-        }
-    }
-];
-playGame($name, $answersCount, $config);
+if (file_exists($autoloadPath1)) {
+    require_once $autoloadPath1;
+} else {
+    require_once $autoloadPath2;
+}
+
+use function Brain\Games\Even\startEven;
+
+startEven();

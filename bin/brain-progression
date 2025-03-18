@@ -1,34 +1,16 @@
 #!/usr/bin/env php
 <?php
-require_once(__DIR__ . '/../vendor/autoload.php');
-
-use function BrainGames\Engine\close;
-use function \BrainGames\Engine\playGame;
-use function \BrainGames\Utils\getProgression;
 
 
-$name = 'Mr';
-$answersCount = 0;
-$config = [
-    'answer'       => 'What number is missing in the progression?',
-    'questionFunc' => function () {
-        $length = rand(5, 10);
-        $progression = getProgression($length, rand(1, 20), rand(1, 5));
+$autoloadPath1 = __DIR__ . '/../../../autoload.php';
 
-        $hiddenIndex = rand(0, $length - 1);
-        $resultQuestion = $progression[$hiddenIndex];
-        $progression[$hiddenIndex] = '..';
-        $question = implode(' ',$progression);
+$autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
 
-        return [
-            'question' => $question,
-            'resultOk' => $resultQuestion,
-        ];
-    },
-    'validate'     => function ($answer, $resultQuestion) {
-        if (!is_int($resultQuestion)) {
-            close(";'$answer' is wrong answer ;(.");
-        }
-    }
-];
-playGame($name, $answersCount, $config);
+if (file_exists($autoloadPath1)) {
+    require_once $autoloadPath1;
+} else {
+    require_once $autoloadPath2;
+}
+use function Brain\Games\Progression\startProgression;
+
+startProgression();

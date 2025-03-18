@@ -15,14 +15,12 @@ function playGame(string $name, int $answers, array $config): void
 {
     try {
         greetings($name);
-        answer($config);
+        line($config['answer']);
         getQuestion($answers, $name, $config);
     } catch (\RuntimeException | Error $e) {
-        sendLine($e->getMessage());
+        line($e->getMessage());
     }
 }
-
-
 
 /**
  * Приветствие
@@ -35,14 +33,6 @@ function greetings(string &$name): void
 }
 
 /**
- * Создание вопроса
- */
-function answer(array $config): void
-{
-    line($config['answer']);
-}
-
-/**
  * Запрос вопроса
  */
 function getQuestion(int &$answers, string $name, array $config): bool
@@ -50,7 +40,7 @@ function getQuestion(int &$answers, string $name, array $config): bool
     $configQuestion = $config['questionFunc']();
     $question = $configQuestion['question'];
     $answer = prompt("Question: " . $question);
-    sendLine("Your answer: $answer");
+    line("Your answer: $answer");
     $config['validate']($answer, $configQuestion['resultOk']);
     if ($configQuestion['resultOk'] == $answer) {
         success($answers, $name, $config);
@@ -58,16 +48,6 @@ function getQuestion(int &$answers, string $name, array $config): bool
     }
     bad($answer, $name, $configQuestion);
     return true;
-}
-
-
-
-/**
- * Отправка сообщения
- */
-function sendLine(string $text = ""): void
-{
-    line($text);
 }
 
 /**

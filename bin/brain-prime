@@ -1,34 +1,15 @@
 #!/usr/bin/env php
 <?php
-require_once(__DIR__ . '/../vendor/autoload.php');
+$autoloadPath1 = __DIR__ . '/../../../autoload.php';
 
-use function BrainGames\Engine\close;
-use function \BrainGames\Engine\playGame;
-use function \BrainGames\Utils\isPrime;
+$autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
 
+if (file_exists($autoloadPath1)) {
+    require_once $autoloadPath1;
+} else {
+    require_once $autoloadPath2;
+}
 
-const VARIANTS = [
-    'yes' => true,
-    'no'  => false
-];
-$name = 'Mr';
-$answersCount = 0;
-$config = [
-    'answer'       => 'Answer "yes" if given number is prime. Otherwise answer "no".',
-    'questionFunc' => function () {
+use function Brain\Games\Prime\startPrime;
 
-        $numberQuestion = rand(1, 99);
-        $resultQuestion = isPrime($numberQuestion);
-        return [
-            'question'  => $numberQuestion,
-            'resultOk'  => $resultQuestion ? 'yes' : 'no',
-            'resultBad' => $resultQuestion ? 'no' : 'yes'
-        ];
-    },
-    'validate'     => function ($answer, $resultQuestion) {
-        if (!in_array($answer,array_keys(VARIANTS))) {
-            close(";'$answer' is wrong answer ;(.");
-        }
-    }
-];
-playGame($name, $answersCount, $config);
+startPrime();
