@@ -21,7 +21,7 @@ function startEven(): void
                 'resultBad' => $resultQuestion ? 'no' : 'yes'
             ];
         },
-        'validate'     => function ($answer) {
+        'validate'     => function ($answer = '') {
             if (!in_array($answer, ['yes', 'no'])) {
                 close("'$answer' is wrong answer ;(.");
             }

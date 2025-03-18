@@ -22,7 +22,7 @@ function startPrime()
                 'resultBad' => $resultQuestion ? 'no' : 'yes'
             ];
         },
-        'validate'     => function ($answer) {
+        'validate'     => function ($answer = '') {
             if (!in_array($answer, array_keys(['yes' => true, 'no' => false]))) {
                 close(";'$answer' is wrong answer ;(.");
             }
