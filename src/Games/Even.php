@@ -22,7 +22,7 @@ function startEven(): void
             ];
         },
         'validate'     => function ($answer = '') {
-            if (!in_array($answer, ['yes', 'no'])) {
+            if (!in_array($answer, ['yes', 'no'], false)) {
                 close("'$answer' is wrong answer ;(.");
             }
         }

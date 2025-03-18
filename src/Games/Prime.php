@@ -23,7 +23,7 @@ function startPrime()
             ];
         },
         'validate'     => function ($answer = '') {
-            if (!in_array($answer, array_keys(['yes' => true, 'no' => false]))) {
+            if (!in_array($answer, ['yes', 'no'], false)) {
                 close(";'$answer' is wrong answer ;(.");
             }
         }
