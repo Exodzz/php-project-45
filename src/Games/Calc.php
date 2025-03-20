@@ -7,7 +7,6 @@ use function BrainGames\Engine\playGame;
 
 function startCalc(): void
 {
-    $name = 'Mr';
     $answersCount = 0;
     $config = [
         'answer'       => 'What is the result of the expression?',
@@ -41,5 +40,5 @@ function startCalc(): void
             }
         }
     ];
-    playGame($name, $answersCount, $config);
+    playGame($answersCount, $config);
 }

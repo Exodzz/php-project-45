@@ -8,7 +8,6 @@ use function BrainGames\Engine\playGame;
 function startEven(): void
 {
 
-    $name = 'Mr';
     $answersCount = 0;
     $config = [
         'answer'       => 'Answer "yes" if the number is even, otherwise answer "no".',
@@ -27,5 +26,5 @@ function startEven(): void
             }
         }
     ];
-    playGame($name, $answersCount, $config);
+    playGame($answersCount, $config);
 }

@@ -8,7 +8,6 @@ use function BrainGames\Utils\gcd;
 
 function startGcd(): void
 {
-    $name = 'Mr';
     $answersCount = 0;
     $config = [
         'answer'       => 'Find the greatest common divisor of given numbers.',
@@ -30,5 +29,5 @@ function startGcd(): void
             }
         }
     ];
-    playGame($name, $answersCount, $config);
+    playGame($answersCount, $config);
 }

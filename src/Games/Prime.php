@@ -8,7 +8,6 @@ use function BrainGames\Utils\isPrime;
 
 function startPrime()
 {
-    $name = 'Mr';
     $answersCount = 0;
     $config = [
         'answer'       => 'Answer "yes" if given number is prime. Otherwise answer "no".',
@@ -28,5 +27,5 @@ function startPrime()
             }
         }
     ];
-    playGame($name, $answersCount, $config);
+    playGame($answersCount, $config);
 }

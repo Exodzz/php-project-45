@@ -8,7 +8,6 @@ use function BrainGames\Utils\getProgression;
 
 function startProgression(): void
 {
-    $name = 'Mr';
     $answersCount = 0;
     $config = [
         'answer'       => 'What number is missing in the progression?',
@@ -32,5 +31,5 @@ function startProgression(): void
             }
         }
     ];
-    playGame($name, $answersCount, $config);
+    playGame($answersCount, $config);
 }

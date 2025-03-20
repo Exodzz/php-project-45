@@ -11,9 +11,10 @@ const COUNT_ALLOW = 3;
 /**
  * init
  */
-function playGame(string $name, int $answers, array $config): void
+function playGame(int $answers, array $config): void
 {
     try {
+        $name = '';
         greetings($name);
         line($config['answer']);
         getQuestion($answers, $name, $config);
