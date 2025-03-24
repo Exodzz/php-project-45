@@ -25,8 +25,6 @@ function playGame($config): void
             $answer = prompt("Question: " . $question);
             line("Your answer: $answer");
 
-            $config['validate']($answer, $configQuestion['resultOk']);
-
             if ($configQuestion['resultOk'] != $answer) {
                 $message = "'$answer' is wrong answer ;(. Correct answer was '{$configQuestion['resultOk']}'.";
                 throw new \RuntimeException($message);
@@ -40,5 +38,6 @@ function playGame($config): void
         }
     } catch (\RuntimeException | Error $e) {
         line($e->getMessage());
+        line("Let's try again, $name!");
     }
 }

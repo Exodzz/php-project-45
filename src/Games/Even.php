@@ -18,11 +18,6 @@ function startEven(): void
                 'resultOk'  => $resultQuestion ? 'yes' : 'no',
                 'resultBad' => $resultQuestion ? 'no' : 'yes'
             ];
-        },
-        'validate'     => function ($answer) {
-            if ($answer !== 'yes' && $answer !== 'no') {
-                throw new \RuntimeException("'$answer' is wrong answer ;(.");
-            }
         }
     ];
     playGame($config);

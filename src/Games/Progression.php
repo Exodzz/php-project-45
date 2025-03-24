@@ -33,11 +33,6 @@ function startProgression(): void
                 'resultOk' => $resultQuestion,
             ];
         },
-        'validate'     => function ($answer, $resultQuestion) {
-            if (!is_int($resultQuestion)) {
-                throw new \RuntimeException("'$answer' is wrong answer ;(.");
-            }
-        }
     ];
     playGame($config);
 }
