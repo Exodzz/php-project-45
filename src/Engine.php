@@ -8,7 +8,7 @@ use function cli\line;
 use function cli\prompt;
 
 const COUNT_ALLOW = 3;
-function playGame($config): void
+function playGame(array $config): void
 {
     $answers = 0;
     $name = '';
