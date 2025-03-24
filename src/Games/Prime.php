@@ -2,8 +2,8 @@
 
 namespace Brain\Games\Prime;
 
-use function BrainGames\Engine\close;
 use function BrainGames\Engine\playGame;
+use function cli\line;
 
 function isPrime(int $n)
 {
@@ -30,7 +30,6 @@ function isPrime(int $n)
 
 function startPrime()
 {
-    $answersCount = 0;
     $config = [
         'answer'       => 'Answer "yes" if given number is prime. Otherwise answer "no".',
         'questionFunc' => function () {
@@ -45,9 +44,9 @@ function startPrime()
         },
         'validate'     => function ($answer = '') {
             if ($answer !== 'yes' && $answer !== 'no') {
-                close(";'$answer' is wrong answer ;(.");
+                line(";'$answer' is wrong answer ;(.");
             }
         }
     ];
-    playGame($answersCount, $config);
+    playGame($config);
 }

@@ -2,8 +2,8 @@
 
 namespace Brain\Games\Gcd;
 
-use function BrainGames\Engine\close;
 use function BrainGames\Engine\playGame;
+use function cli\line;
 
 function gcd(int $a, int $b)
 {
@@ -17,7 +17,6 @@ function gcd(int $a, int $b)
 
 function startGcd(): void
 {
-    $answersCount = 0;
     $config = [
         'answer'       => 'Find the greatest common divisor of given numbers.',
         'questionFunc' => function () {
@@ -34,9 +33,9 @@ function startGcd(): void
         },
         'validate'     => function ($answer, $resultQuestion) {
             if (!is_int($resultQuestion)) {
-                close(";'$answer' is wrong answer ;(.");
+                line(";'$answer' is wrong answer ;(.");
             }
         }
     ];
-    playGame($answersCount, $config);
+    playGame($config);
 }

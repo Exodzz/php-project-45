@@ -2,10 +2,10 @@
 
 namespace Brain\Games\Progression;
 
-use function BrainGames\Engine\close;
 use function BrainGames\Engine\playGame;
+use function cli\line;
 
-function getProgression(int $length, int $start, int $difference)
+function getProgression(int $length, int $start, int $difference): array
 {
     $progression = [];
     for ($i = 0; $i < $length; $i++) {
@@ -35,9 +35,9 @@ function startProgression(): void
         },
         'validate'     => function ($answer, $resultQuestion) {
             if (!is_int($resultQuestion)) {
-                close(";'$answer' is wrong answer ;(.");
+                line(";'$answer' is wrong answer ;(.");
             }
         }
     ];
-    playGame($answersCount, $config);
+    playGame($config);
 }

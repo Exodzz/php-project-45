@@ -2,12 +2,11 @@
 
 namespace Brain\Games\Calc;
 
-use function BrainGames\Engine\close;
 use function BrainGames\Engine\playGame;
+use function cli\line;
 
 function startCalc(): void
 {
-    $answersCount = 0;
     $config = [
         'answer'       => 'What is the result of the expression?',
         'questionFunc' => function () {
@@ -36,9 +35,9 @@ function startCalc(): void
         },
         'validate'     => function ($answer, $resultQuestion) {
             if (!is_int($resultQuestion)) {
-                close(";'$answer' is wrong answer ;(.");
+                line(";'$answer' is wrong answer ;(.");
             }
         }
     ];
-    playGame($answersCount, $config);
+    playGame($config);
 }

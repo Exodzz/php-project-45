@@ -17,6 +17,7 @@ function playGame($config): void
         line('Welcome to the Brain Game!');
         $name = prompt('May I have your name?');
         line("Hello, %s!", $name);
+        line($config['answer']);
 
         while ($answers < COUNT_ALLOW) {
             $configQuestion = $config['questionFunc']();
@@ -26,6 +27,10 @@ function playGame($config): void
 
             $config['validate']($answer, $configQuestion['resultOk']);
 
+            if ($configQuestion['resultOk'] != $answer) {
+                $message = "'$answer' is wrong answer ;(. Correct answer was '{$configQuestion['resultOk']}'.";
+                throw new \RuntimeException($message);
+            }
             line("Correct!");
             $answers++;
 

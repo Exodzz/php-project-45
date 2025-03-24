@@ -2,13 +2,12 @@
 
 namespace Brain\Games\Even;
 
-use function BrainGames\Engine\close;
 use function BrainGames\Engine\playGame;
+use function cli\line;
 
 function startEven(): void
 {
 
-    $answersCount = 0;
     $config = [
         'answer'       => 'Answer "yes" if the number is even, otherwise answer "no".',
         'questionFunc' => function () {
@@ -22,9 +21,9 @@ function startEven(): void
         },
         'validate'     => function ($answer) {
             if ($answer !== 'yes' && $answer !== 'no') {
-                close("'$answer' is wrong answer ;(.");
+                line("'$answer' is wrong answer ;(.");
             }
         }
     ];
-    playGame($answersCount, $config);
+    playGame($config);
 }
