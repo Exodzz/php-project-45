@@ -44,7 +44,7 @@ function startPrime()
         },
         'validate'     => function ($answer = '') {
             if ($answer !== 'yes' && $answer !== 'no') {
-                line(";'$answer' is wrong answer ;(.");
+                throw new \RuntimeException("'$answer' is wrong answer ;(.");
             }
         }
     ];

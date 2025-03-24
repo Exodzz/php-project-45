@@ -33,7 +33,7 @@ function startGcd(): void
         },
         'validate'     => function ($answer, $resultQuestion) {
             if (!is_int($resultQuestion)) {
-                line(";'$answer' is wrong answer ;(.");
+                throw new \RuntimeException("'$answer' is wrong answer ;(.");
             }
         }
     ];
