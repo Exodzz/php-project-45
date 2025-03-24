@@ -4,7 +4,16 @@ namespace Brain\Games\Gcd;
 
 use function BrainGames\Engine\close;
 use function BrainGames\Engine\playGame;
-use function BrainGames\Utils\gcd;
+
+function gcd(int $a, int $b)
+{
+    while ($b != 0) {
+        $temp = $b;
+        $b = $a % $b;
+        $a = $temp;
+    }
+    return $a;
+}
 
 function startGcd(): void
 {

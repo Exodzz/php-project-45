@@ -4,7 +4,15 @@ namespace Brain\Games\Progression;
 
 use function BrainGames\Engine\close;
 use function BrainGames\Engine\playGame;
-use function BrainGames\Utils\getProgression;
+
+function getProgression(int $length, int $start, int $difference)
+{
+    $progression = [];
+    for ($i = 0; $i < $length; $i++) {
+        $progression[] = $start + $i * $difference;
+    }
+    return $progression;
+}
 
 function startProgression(): void
 {

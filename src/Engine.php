@@ -44,17 +44,17 @@ function getQuestion(int &$answers, string $name, array $config): bool
     line("Your answer: $answer");
     $config['validate']($answer, $configQuestion['resultOk']);
     if ($configQuestion['resultOk'] == $answer) {
-        success($answers, $name, $config);
-        return false;
+        sendSuccess($answers, $name, $config);
+        return true;
     }
-    bad($answer, $name, $configQuestion);
+    sendError($answer, $name, $configQuestion);
     return true;
 }
 
 /**
  * Отправка сообщения
  */
-function bad(string $answer, string $name, array $configQuestion): void
+function sendError(string $answer, string $name, array $configQuestion): void
 {
     $message = "'$answer' is wrong answer ;(. Correct answer was '{$configQuestion['resultOk']}'." . PHP_EOL .
         "Let's try again, $name!";
@@ -69,7 +69,7 @@ function addSuccessAnswer(int &$answers, string $name)
     }
 }
 
-function success(int &$answers, string $name, array $config): void
+function sendSuccess(int &$answers, string $name, array $config): void
 {
     line("Correct!");
     addSuccessAnswer($answers, $name);
