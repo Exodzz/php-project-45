@@ -18,7 +18,7 @@ function gcd(int $a, int $b)
 function startGcd(): void
 {
     $config = [
-        'answer'       => 'Find the greatest common divisor of given numbers.',
+        'description'       => 'Find the greatest common divisor of given numbers.',
         'questionFunc' => function () {
             $numberQuestion1 = rand(23, 99);
             $numberQuestion2 = rand(10, 99);

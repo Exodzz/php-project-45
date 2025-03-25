@@ -18,7 +18,7 @@ function startProgression(): void
 {
     $answersCount = 0;
     $config = [
-        'answer'       => 'What number is missing in the progression?',
+        'description'       => 'What number is missing in the progression?',
         'questionFunc' => function () {
             $length = rand(5, 10);
             $progression = getProgression($length, rand(1, 20), rand(1, 5));

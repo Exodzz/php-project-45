@@ -9,7 +9,7 @@ function startEven(): void
 {
 
     $config = [
-        'answer'       => 'Answer "yes" if the number is even, otherwise answer "no".',
+        'description'       => 'Answer "yes" if the number is even, otherwise answer "no".',
         'questionFunc' => function () {
             $numberQuestion = rand(1, 99);
             $resultQuestion = $numberQuestion % 2 === 0;

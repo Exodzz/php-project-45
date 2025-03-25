@@ -31,7 +31,7 @@ function isPrime(int $n)
 function startPrime()
 {
     $config = [
-        'answer'       => 'Answer "yes" if given number is prime. Otherwise answer "no".',
+        'description'       => 'Answer "yes" if given number is prime. Otherwise answer "no".',
         'questionFunc' => function () {
 
             $numberQuestion = rand(1, 99);
@@ -39,7 +39,6 @@ function startPrime()
             return [
                 'question'  => $numberQuestion,
                 'resultOk'  => $resultQuestion ? 'yes' : 'no',
-                'resultBad' => $resultQuestion ? 'no' : 'yes'
             ];
         }
     ];

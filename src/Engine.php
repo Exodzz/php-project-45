@@ -7,7 +7,7 @@ use Error;
 use function cli\line;
 use function cli\prompt;
 
-const COUNT_ALLOW = 3;
+const COUNT_ROUND = 3;
 function playGame(array $config): void
 {
     $answers = 0;
@@ -17,9 +17,9 @@ function playGame(array $config): void
         line('Welcome to the Brain Game!');
         $name = prompt('May I have your name?');
         line("Hello, %s!", $name);
-        line($config['answer']);
+        line($config['description']);
 
-        while ($answers < COUNT_ALLOW) {
+        while ($answers < COUNT_ROUND) {
             $configQuestion = $config['questionFunc']();
             $question = $configQuestion['question'];
             $answer = prompt("Question: " . $question);
@@ -31,11 +31,8 @@ function playGame(array $config): void
             }
             line("Correct!");
             $answers++;
-
-            if ($answers >= COUNT_ALLOW) {
-                throw new \RuntimeException("Congratulations, $name!");
-            }
         }
+        line("Congratulations, $name!");
     } catch (\RuntimeException | Error $e) {
         line($e->getMessage());
         line("Let's try again, $name!");

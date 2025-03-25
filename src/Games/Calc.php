@@ -8,12 +8,12 @@ use function cli\line;
 function startCalc(): void
 {
     $config = [
-        'answer'       => 'What is the result of the expression?',
+        'description'       => 'What is the result of the expression?',
         'questionFunc' => function () {
             $operators = ['-', '+', '*'];
             $numberQuestion1 = rand(1, 99);
             $numberQuestion2 = rand(1, 99);
-            $operator = $operators[rand(0, count($operators) - 1)];
+            $operator = array_rand($operators);
             $question = "$numberQuestion1 {$operator} $numberQuestion2";
 
             switch ($operator) {
