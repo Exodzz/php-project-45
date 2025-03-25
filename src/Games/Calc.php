@@ -13,7 +13,7 @@ function startCalc(): void
             $operators = ['-', '+', '*'];
             $numberQuestion1 = rand(1, 99);
             $numberQuestion2 = rand(1, 99);
-            $operator = array_rand($operators);
+            $operator = $operators[array_rand($operators)];
             $question = "$numberQuestion1 {$operator} $numberQuestion2";
 
             switch ($operator) {
